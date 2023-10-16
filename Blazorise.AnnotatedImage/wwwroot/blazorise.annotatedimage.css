@@ -1,0 +1,24 @@
+﻿.imageannotation {
+    /*  The style assigned to the img prevents a serious bug in Blazor on iOS/Catalyst. 
+        Essentually, iOS trys to run some VisionKit image processing on the img when it 
+        is clicked and a bug in that process causes the onpointermove to not fire. This style also 
+        addresses a "bug" in Andriod where the moveevents are doubled (causing the 
+        pointer to race ahead of the image movement).
+    */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+}
+
+.annotatedimage {
+    touch-action: none;
+    position: relative;
+}
+
+.annotatedimage img {
+    touch-action: none;
+    object-fit: contain;
+}

@@ -1,0 +1,45 @@
+﻿@namespace Blazorise.AnnotatedImage
+@inherits BaseComponent
+@typeparam TItem
+@using System.Text
+
+<div class="@ClassNames"
+     style="@StyleNames"
+     id="@ElementId"
+     @ref="@ElementRef"
+     @attributes="@Attributes">
+     @if(ImageWidth != 0 || ImageHeight != 0)
+     {
+    <img 
+        height="@ImageHeight"
+        width="@ImageWidth"
+        @ref="backgroundImageRef" 
+        src="@Source">
+       
+    } else
+    {
+        <img 
+         @ref="backgroundImageRef"
+         src="@Source">
+       
+    }
+
+    @if (Annotations != null)
+    {
+        @foreach (var item in Annotations.Values)
+        {
+            <ImageAnnotation 
+            ElementId="@item.Id"
+            AnnotatedImageClientRect="@CanvasRect"
+            TItem="TItem"
+            ImageAnnotationData="@item"
+            OnImageAnnotationSelected="ImageAnnotationSelected"
+            OnImageAnnotationStartMove="ImageAnnotationStartMove"
+            OnImageAnnotationMoved="ImageAnnotationMoved"
+            OnImageAnnotationEndMove="ImageAnnotationEndMove"
+            OnImageAnnotationUnselected="ImageAnnotationUnselected"
+            />
+        }
+    }
+</div>
+

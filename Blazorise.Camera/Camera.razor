@@ -1,0 +1,10 @@
+﻿@namespace Blazorise.Camera 
+@inherits BaseComponent 
+@if (!isCameraAvailable)
+{
+    <p>The device camera is unavailable. If you have authorized camera use, then the camera may be 
+        in use by another browser app.
+    </p>
+}
+<video @ref="@ElementRef" id="@ElementId" class="@ClassNames" style="@StyleNames" @attributes="@Attributes"  autoplay playsinline/>
+
